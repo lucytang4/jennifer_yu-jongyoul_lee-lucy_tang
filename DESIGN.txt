@@ -1,1 +1,40 @@
+GROUP MEMBERS: Jennifer Yu, Jongyoul Lee, Lucy Tang
 
+PROJECT DESCRIPTION
+    Recreation of the game Blackjack
+    RULES: https://www.pagat.com/banking/blackjack.html
+    Casino style with players vs dealer.
+    For the players to win, its a team effort. The dealer must have more losses than wins total by the end of the round.
+    NO money involved, just a win count and loss count.
+
+USER INTERFACE
+    There will be at least 2 players: 1 dealer, 1 challenger
+    All cards are dealt randomly (limited to one or more decks depending on number of players)
+    Each player takes a turn, until all the players have been served.
+    The dealer reveals both of his cards.
+    The dealer must draw if his cards total below 17.
+    The players are sent the results of their individual game.
+    And then they are sent the overall results of the round.
+
+TECHNICAL DESIGN
+    Memory allocation
+    Writing and Reading information from files: keep track of moves
+    Networking: Server is the dealer and clients are the players
+    Semaphores: control the amount of players
+    Shared Memory: keep track of the cards used
+    Signals: quit game
+    
+DATA STRUCTURES
+    Some kind of queue for each players' turns
+    
+ALGORITHMS
+    Client-Server Handshake to manage first connection
+    
+TIMELINE
+    We plan to work together on all aspects of the project.
+    1/6: Proposal Completed
+    1/10: Set up the game (deal cards, display, etc)
+    1/14: Work on communication between server and clients (turns work, can send info and receive info)
+    1/17: Add numbers and game functionality (compare results and decide who wins)
+    1/20: Due date
+    Until due date: Test program, fix bugs
