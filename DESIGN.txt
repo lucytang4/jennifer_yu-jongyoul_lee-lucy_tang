@@ -44,3 +44,7 @@ TIMELINE
     1/21: Implement multiple number of decks (if there's time)
     1/23: Due date
     Until due date: Test program, fix bugs
+    
+Additional Features:
+    Names of players
+    
