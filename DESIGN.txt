@@ -40,6 +40,7 @@ TIMELINE
     1/6: Proposal Completed
     1/12: Set up the game (deal cards, display, etc)
     1/16: Work on communication between server and clients (turns work, can send info and receive info)
-    1/19: Add numbers and game functionality (compare results and decide who wins)
+    1/19: Add numbers and game functionality in Hard 17 (compare results and decide who wins)
+    1/21: Implement Soft 17 (if there's time)
     1/23: Due date
     Until due date: Test program, fix bugs
