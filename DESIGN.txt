@@ -14,6 +14,7 @@ PROJECT DESCRIPTION
 
 USER INTERFACE
     There will be at least 2 players: 1 dealer, 1 challenger
+    Dealer is automated
     All cards are dealt randomly (limited to one or more decks depending on number of players)
     Each player takes a turn, until all the players have been served.
     The dealer reveals both of his cards.
