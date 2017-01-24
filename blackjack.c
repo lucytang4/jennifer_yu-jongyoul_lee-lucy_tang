@@ -246,10 +246,10 @@ void show_table()
 	char* v_name="A23456789TJQK";
 	char* s_name="SHDC";
 
-	printf("name\t bal\t bet\t hand\t status\n");
-	printf("----\t ---\t ---\t ----\t ------\n");
+	printf("name\t bal\t bet\t total\t hand\t status\n");
+	printf("----\t ---\t ---\t -----\t ----\t ------\n");
 	for (p=0;p<=n_players;++p) {
-		printf("%s\t %d\t %d\t",name[p],bal[p],bet[p]);
+		printf("%s\t %d\t %d\t %d\t",name[p],bal[p],bet[p],hand_tot_min[p]);
 		for (i=0;i<hand_pos[p];i++) {
 			c=hand[p][i];
 			v=c%13;
@@ -269,8 +269,70 @@ void show_table()
 		else
 			printf("\tin progress");
 		printf("\n");
+		if (p == 0) {
+			int ctr = 10;
+			srand(time(NULL));
+			while (hand_tot_min[0] < 17) {
+				printf("\nDealer draws a new card: ");
+				int r = rand() % 10 + 1;
+				hand_tot_min[0]+=r;
+				if (r == 1) {
+					printf("A");
+				}
+				else if (r == 2) {
+					printf("2");
+				}
+				else if (r == 3) {
+					printf("3");
+				}
+				else if (r == 4) {
+					printf("4");
+				}
+				else if (r == 5) {
+					printf("5");
+				}
+				else if (r == 6) {
+					printf("6");
+				}
+				else if (r == 7) {
+					printf("7");
+				}
+				else if (r == 8) {
+					printf("8");
+				}
+				else if (r == 9) {
+					printf("9");
+				}
+				else if (r == 10) {
+					printf("10");
+				}
+				srand(time(NULL));
+				int s = rand() % 4 + 1;
+				if (s == 1) {
+					printf("H\n");
+				}
+				else if (s == 2) {
+					printf("C\n");
+				}
+				else if (s == 3) {
+					printf("S\n");
+				}
+				else if (s == 4) {
+					printf("D\n");
+				}
+				printf("Dealer's New Total: %d\n", hand_tot_min[0]);
+				if (hand_tot_min[0] > 21) {
+					printf("\nDealer busted! You win!\n\n");
+					exit(0);
+				}
+				else if (hand_tot_min[0] == 21) {
+					printf("\nDealer got a blackjack! If you get a blackjack too, then you win!\n\n");
+				}
+			}
+			printf("Dealer does not draw a card. Your turn!\n\n");
+		}
 	}
-	sleep(10);
+	sleep(20);
 }
 /*
 -----------------------------------------------------------------------------------------------------------------------------
