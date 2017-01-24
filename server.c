@@ -4,7 +4,7 @@
 #include <unistd.h>
 
 #include "networking.h"
-#include "cards.h"
+//#include "cards.h"
 
 
 void process( char * s );

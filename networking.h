@@ -3,7 +3,7 @@
 
 #define MESSAGE_BUFFER_SIZE 1000
 
-int playercount;
+extern int playercount;
 
 void error_check( int i, char *s );
 

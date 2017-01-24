@@ -1,21 +1,18 @@
 all: server client 
 
-server: server.o networking.o cards.o
-	gcc -o server server.o networking.o cards.o
+server: server.o networking.o 
+	gcc -o server server.o networking.o 
 
-client: client.o networking.o cards.o
-	gcc -o client client.o networking.o cards.o
+client: client.o networking.o 
+	gcc -o client client.o networking.o 
 	
-server.o: server.c networking.h cards.h
+server.o: server.c networking.h blackjack.h
 	gcc -c server.c
 
-client.o: client.c networking.h cards.h
+client.o: client.c networking.h blackjack.h
 	gcc -c client.c
 	
-cards.o: cards.c cards.h
-	gcc -c cards.c
-
-networking.o: networking.c networking.h
+networking.o: networking.c networking.h 
 	gcc -c networking.c
 
 clean:

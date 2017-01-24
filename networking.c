@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <arpa/inet.h>
 
+
 int playercount = 0;
 
 void error_check( int i, char *s ) {
