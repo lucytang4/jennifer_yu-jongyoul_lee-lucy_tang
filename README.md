@@ -5,6 +5,7 @@ Jongyoul Lee Pd 4
 Lucy Tang Pd 4
 
 Files that should be in repo:
+________________
 blackjack.c
 
 blackjack.h
@@ -24,6 +25,7 @@ DESIGN.txt
 DEVOG.txt
 
 README.md
+________________
 
 To run:
 "make clean"
