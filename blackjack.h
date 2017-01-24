@@ -7,7 +7,7 @@ functions
 */
 void init_game();
 void init_round();
-bool no_bet
+bool no_bet;
 void play_round();
 bool another_round();
 void get_players();
