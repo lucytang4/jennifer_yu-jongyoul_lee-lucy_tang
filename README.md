@@ -43,10 +43,11 @@ Did not complete networking aspect.
 If you and the dealer get a blackjack, you win. :))
 
 BUGS
-Ace is counted as 1 for simplicity.
-When receiving a new card, you get 10 instead of J, Q, K
-Betting and balance is not implemented.
-Player only takes one turn. (Ran out of time to put a while loop)
+
+Ace is counted as 1 for simplicity.  
+When receiving a new card, you get 10 instead of J, Q, K  
+Betting and balance is not implemented.  
+Player only takes one turn. (Ran out of time to put a while loop)  
 When the dealer gets a 20, it doesn't print the "Dealer does not take a card. Your Turn!" message
 
 Please note that we worked in cloud9 for the majority of the project for optimal
