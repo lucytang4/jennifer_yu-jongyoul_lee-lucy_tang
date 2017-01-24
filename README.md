@@ -6,14 +6,23 @@ Lucy Tang Pd 4
 
 Files that should be in repo:
 blackjack.c
+
 blackjack.h
+
 client.c
+
 makefile
+
 networking.c
+
 networking.h
+
 server.c
+
 DESIGN.txt
+
 DEVOG.txt
+
 README.md
 
 To run:
