@@ -50,7 +50,7 @@ init_game
 void init_game()
 {
 	int i;
-	
+
 	for (i=0;i<52;++i) deck[i]=i;
 	get_players();
 	srand(time(NULL));
@@ -82,7 +82,7 @@ play_round
 void play_round()
 {
 	int p;
-	
+
 	shuffle();
 	deal_initial_cards();
 	check_blackjacks();
@@ -97,7 +97,7 @@ another_round
 bool another_round()
 {
 	int p;
-	
+
 	for (p=1;p<=n_players;++p) {
 		if (active[p]) return true;
 	}
@@ -111,16 +111,16 @@ get_players
 void get_players()
 {
 	int p;
-	
-	n_players=3;
+
+	n_players=1;
 	for (p=0;p<=n_players;++p) {
 		active[p]=true;
 		bal[p]=0;
 		name[p]=malloc(32);
-		if (p==0) 
+		if (p==0)
 			strcpy(name[p],"Dealer");
 		else
-			sprintf(name[p],"Player %d",p);
+			sprintf(name[p],"Player%d",p);
 	}
 }
 /*
@@ -131,11 +131,11 @@ get_bets
 void get_bets()
 {
 	int p;
-	
+
 	for (p=1;p<=n_players;++p) {
 		active[p]=true;
 		bet[p]=1;
-		
+
 	}
 	n_bets=n_players;
 }
@@ -147,7 +147,7 @@ shuffle
 void shuffle()
 {
 	int i,r,v,w;
-	
+
 	for (i=0;i<52;++i) {
 		r=rand() % 52;
 		v=deck[i];
@@ -167,7 +167,7 @@ init_hands
 void init_hands()
 {
 	int p;
-	
+
 	for (p=1;p<=n_players;++p) {
 		if (bet[p]>0) {
 			hand_pos[p]=0;
@@ -184,7 +184,7 @@ deal_initial_cards
 void deal_initial_cards()
 {
 	int i,q,p,v;
-	
+
 	for (q=1;q<=n_players+1;++q) {
 		if (q<=n_players) p=q; else p=0;
 		if ((p>0)&&(bet[p]==0)) continue;
@@ -205,9 +205,9 @@ update_tots
 void update_tots(int v,int p)
 {
 	int r;
-	
+
 	r=(v%13)+1;
-	if (r>=10) r=10; 
+	if (r>=10) r=10;
 	if (r==1) {
 		hand_tot_min[p]+=1;
 		hand_tot_max[p]+=11;}
@@ -224,7 +224,7 @@ check_blackjacks()
 void	check_blackjacks()
 {
 	int p,x,y,z;
-	
+
 	for (p=0;p<=n_players;++p) {
 		blackjack[p]=false;
 		if ((p>0)&&(bet[p]==0)) continue;
@@ -232,7 +232,7 @@ void	check_blackjacks()
 		y=((hand[p][1])%13)+1;
 		z=x;
 		if (x>y) {x=y; y=z;}
-		if ((x==1)&&(y>=10)) blackjack[p]=true;	
+		if ((x==1)&&(y>=10)) blackjack[p]=true;
 	}
 }
 /*
@@ -245,29 +245,29 @@ void show_table()
 	int p,i,c,v,s;
 	char* v_name="A23456789TJQK";
 	char* s_name="SHDC";
-	
-	printf("name bal bet hand status\n");
-	printf("---- --- --- ---- ------\n");
+
+	printf("name\t bal\t bet\t hand\t status\n");
+	printf("----\t ---\t ---\t ----\t ------\n");
 	for (p=0;p<=n_players;++p) {
-		printf("%s %d %d",name[p],bal[p],bet[p]);
+		printf("%s\t %d\t %d\t",name[p],bal[p],bet[p]);
 		for (i=0;i<hand_pos[p];i++) {
 			c=hand[p][i];
 			v=c%13;
 			s=c/13;
 			printf(" %c%c",v_name[v],s_name[s]);
 		}
-		if (!active[p]) 
-			printf("quit");
+		if (!active[p])
+			printf("\tfold");
 		else if (bet[p]==0)
-			printf("no bet");
+			printf("\tno bet");
 		else if (blackjack[p])
-			printf("blackjack");
+			printf("\tblackjack");
 		else if (busted[p])
-			printf("busted");
+			printf("\tbusted");
 		else if (complete[p])
-			printf("completed");
+			printf("\tcompleted");
 		else
-			printf("in progress");
+			printf(" in progress");
 		printf("\n");
 	}
 	sleep(10);
