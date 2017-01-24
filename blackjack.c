@@ -181,9 +181,10 @@ void init_hands()
 deal_initial_cards
 -----------------------------------------------------------------------------------------------------------------------------
 */
+	int i,q,p,v;
 void deal_initial_cards()
 {
-	int i,q,p,v;
+
 
 	for (q=1;q<=n_players+1;++q) {
 		if (q<=n_players) p=q; else p=0;
@@ -269,8 +270,7 @@ void show_table()
 		else
 			printf("\tin progress");
 		printf("\n");
-		if (p == 0) {
-			int ctr = 10;
+		//if (p == 0) {
 			srand(time(NULL));
 			while (hand_tot_min[0] < 17) {
 				printf("\nDealer draws a new card: ");
@@ -328,10 +328,113 @@ void show_table()
 				else if (hand_tot_min[0] == 21) {
 					printf("\nDealer got a blackjack! If you get a blackjack too, then you win!\n\n");
 				}
+				else {
+			    	printf("Dealer does not draw a card. Your turn!\n\n");
+				}
 			}
-			printf("Dealer does not draw a card. Your turn!\n\n");
-		}
+		//}
 	}
+
+			printf("What would you like to do? Enter hit or pass.\n\n");
+
+			char buffer[MESSAGE_BUFFER_SIZE];
+			char *tmp = buffer;
+
+            fgets(buffer,sizeof(buffer),stdin);
+            tmp = buffer;
+            while (*tmp != '\n'){
+              *tmp = tolower(*tmp);
+              tmp++;
+            }
+            char *pa = strchr(buffer,'\n');
+            *pa = 0;
+
+            while (!(strcmp("hit",buffer) == 0 | strcmp("pass",buffer) == 0)){
+              printf("You haven't correctly entered hit or pass.\n");
+              fgets(buffer,sizeof(buffer),stdin);
+              tmp = buffer;
+              while (*tmp != '\n'){
+                *tmp = tolower(*tmp);
+                tmp++;
+              }
+              char *pa = strchr(buffer,'\n');
+              *pa = 0;
+            }
+
+            if (strcmp("hit",buffer) == 0){
+            	srand(time(NULL));
+				int r = rand() % 10 + 1;
+				hand_tot_min[1]+=r;
+				if (r == 1) {
+					printf("A");
+				}
+				else if (r == 2) {
+					printf("2");
+				}
+				else if (r == 3) {
+					printf("3");
+				}
+				else if (r == 4) {
+					printf("4");
+				}
+				else if (r == 5) {
+					printf("5");
+				}
+				else if (r == 6) {
+					printf("6");
+				}
+				else if (r == 7) {
+					printf("7");
+				}
+				else if (r == 8) {
+					printf("8");
+				}
+				else if (r == 9) {
+					printf("9");
+				}
+				else if (r == 10) {
+					printf("10");
+				}
+				srand(time(NULL));
+				int s = rand() % 4 + 1;
+				if (s == 1) {
+					printf("H\n");
+				}
+				else if (s == 2) {
+					printf("C\n");
+				}
+				else if (s == 3) {
+					printf("S\n");
+				}
+				else if (s == 4) {
+					printf("D\n");
+				}
+				printf("Your New Total: %d\n", hand_tot_min[1]);
+            }
+            if (strcmp("pass",buffer) == 0){
+            }
+				if (hand_tot_min[1] > 21) {
+					printf("\nYou busted. You lose!\n\n");
+					exit(0);
+				}
+				else if (hand_tot_min[1] == 21) {
+					printf("\nYou got a blackjack! You win!\n\n");
+					exit(0);
+				}
+				else {
+					if (hand_tot_min[0] < hand_tot_min[1]) {
+						printf("You beat the dealer! You win!\n\n");
+					    exit(0);
+					}
+					else if (hand_tot_min[0] == hand_tot_min[1]) {
+						printf("You tied with the dealer. Eh, could be worse.\n\n");
+						exit(0);
+					}
+					else {
+						printf("You lost to the dealer! Better luck next time :)\n\n");
+						exit(0);
+					}
+				}
 	sleep(20);
 }
 /*
