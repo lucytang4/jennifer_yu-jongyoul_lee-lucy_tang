@@ -4,7 +4,12 @@ Jennifer Yu Pd 4
 Jongyoul Lee Pd 4
 Lucy Tang Pd 4
 
-A simple "make" will compile the necessary files.
+To run:
+"make clean"
+"make"
+"./server.c" in one terminal
+"./client.c" in another
+
 One player functionality, can be tested locally.
 Did not complete networking aspect.
 
