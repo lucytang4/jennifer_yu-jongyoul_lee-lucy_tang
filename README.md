@@ -33,6 +33,8 @@ To run:
 "./server.c" in one terminal
 "./client.c" in another
 
+Upon running client, user will be asked to join game. Game will start when user responds "yes."
+
 One player functionality, can be tested locally.
 Did not complete networking aspect.
 
