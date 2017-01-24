@@ -267,7 +267,7 @@ void show_table()
 		else if (complete[p])
 			printf("\tcompleted");
 		else
-			printf(" in progress");
+			printf("\tin progress");
 		printf("\n");
 	}
 	sleep(10);

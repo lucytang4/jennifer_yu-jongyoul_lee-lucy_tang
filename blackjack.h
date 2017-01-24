@@ -16,7 +16,7 @@ void shuffle();
 void init_hands();
 void deal_initial_cards();
 void update_tots(int v,int p);
-void	check_blackjacks();
+void check_blackjacks();
 void show_table();
 /*
 -----------------------------------------------------------------------------------------------------------------------------

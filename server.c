@@ -45,7 +45,7 @@ void sub_server( int sd ) {
   if (strcmp(buffer,"yes") == 0){
     printf("[SERVER] Player has joined!\n");
     update_playercount(1);
-    printf("[SERVER] Player count: %d\n", playercount);
+    //printf("[SERVER] Player count: %d\n", playercount);
   }
   while (read( sd, buffer, sizeof(buffer) )) {
 
