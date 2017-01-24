@@ -49,3 +49,11 @@ TIMELINE
 Additional Features:
     Names of players
     
+DEVLOG
+    1/12: Outline the game
+    1/16: Work on blackjack.c, client.c
+    1/20: One player game functionality
+    1/21: Connect game to networking
+    1/23: Working code
+    1/24: Fix bugs
+    
