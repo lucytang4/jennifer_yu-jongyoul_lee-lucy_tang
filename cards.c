@@ -3,10 +3,12 @@
 #include <string.h>
 #include <time.h>
 
+#include "cards.h"
 
-//char *suits[4] = {"Diamond","Club","Heart","Spade"};
-//char num[13][15] = {"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
-//char deck[52][15];
+int deck_pos;
+char *suits[4] = {"Diamond","Club","Heart","Spade"};
+char num[13][15] = {"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
+char deck[52][15];
 
 void create_deck(){
     int suitCtr, numCtr, deckCtr;
@@ -32,33 +34,48 @@ void print_deck(){
     }
 }
 
-/*void shuffle_deck(){
-    int i;
-    for (i=0;i<52;i++){
-        char *a=deck[i];
-        ran = srand(time(NULL)) % 52;
-        char *b=deck[ran];
-        deck[i]=&b;
-        deck[ran]=&a;
-    }
-}*/
-
 char *get_card(){
     srand(time(NULL));
     int i = rand()%52;
     char *card = deck[i];
     return card;
 }
-/*
-int get_value(char *card) {
-    if (card)
-    strchr(card, " ");
+
+
+void shuffle_deck(){
+    int i,ran;
+    for (i=0;i<52;i++){
+        char *a=deck[i];
+        srand(time(NULL));
+        ran = rand()%52;
+        char *b=deck[ran];
+        //swap_cards(a,b,i,ran);
+        memcpy(deck[i],b,sizeof(deck[i]));
+        memcpy(deck[ran],a,sizeof(deck[ran]));
+    }
+}
+
+/*void swap_cards(char *card1, char *card2, int i, int ran){
+    memcpy(deck[i],card2,sizeof(deck[i]));
+        memcpy(deck[ran],card1,sizeof(deck[ran]));
 }*/
 
 
-int main()
+
+
+int get_value(char *card) {
+    if (card[0] == 'A')
+        return 1; //for now lets just make it 1
+    else if(card[0] == '1' || card[0] == 'J' || card[0] == 'Q' || card[0] == 'K') //for 10, J, Q, K
+        return 10;
+    else
+        return card[0] - '0';
+}
+
+
+/*int main()
 {
-	/*shuffle();
+	shuffle();
 	for (;;) {
 		for (;;) {
 			getNumPlayers();
@@ -69,14 +86,17 @@ int main()
 			
 		}
 		if (ncardsLeft<52) shuffle();
-}*/
+}
     create_deck();
     print_deck();
     char *card = get_card();
     printf("random card: %s\n", card);
+    printf("card value: %d\n", get_value(card));
+    shuffle_deck();
+    print_deck();
 
 
 //deal two cards to each player, including dealer, dealer's first card down
 
     return 0;
-}
+}*/

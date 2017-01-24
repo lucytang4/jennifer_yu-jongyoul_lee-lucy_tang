@@ -7,6 +7,22 @@
 #include "networking.h"
 #include "cards.h"
 
+int dealer_play(){
+  char *card1 = get_card();
+  char *card2 = get_card();
+  int value1 = get_value(card1);
+  int value2 = get_value(card2);
+  int total = value1 + value2;
+  
+  while (total < 17){
+    char *newcard = get_card();
+    int newcardvalue = get_value(newcard);
+    total += newcardvalue;
+  }
+  
+  return total;
+}
+
 int main( int argc, char *argv[] ) {
 
   char *host;
@@ -59,16 +75,18 @@ int main( int argc, char *argv[] ) {
     printf("You have joined!\n");
     write(sd,buffer,sizeof(buffer));
     char *card1 = get_card();
+    printf("card: %s\n", card1);
     char *card2 = get_card();
     int value1 = get_value(card1);
     int value2 = get_value(card2);
     int total = value1 + value2;
     printf("Your first two cards have been dealt:\n%s\n%s\n", card1, card2);
+    printf("Your total is: %d\n", total);
     
 /*
     //INSTANT BLACKJACK
     if (total == 21) {
-      printf("Wow, you have a blackjack already!");
+      printf("Wow, you have a blackjack already!\n");
     }
 */
 
@@ -101,7 +119,31 @@ int main( int argc, char *argv[] ) {
         char * newcard = get_card();
         int newcardvalue = get_value(newcard);
         total += newcardvalue;
+        printf("You got a new card: %s\nYour total is: %d\n", newcard, total);
       }
+    }
+    
+    int dealertotal = dealer_play();//dealer calculates his total (function above main)
+    
+    int result; //0 = loss, 1 = win
+    //BUST
+    if (total > 21 && dealertotal > 21)
+      printf("You both busted... No points given.\n");
+    else if (total > 21) {
+      result = 0;
+      printf("Darn, you just busted... You lost!\n");
+    }
+    else if (dealertotal > 21) {
+      result = 1;
+      printf("The dealer busted... You won!\n");
+    }
+    else if (total < dealertotal){
+      result = 0;
+      printf("You lost!\n");
+    }
+    else if (dealertotal < total){
+      result = 1;
+      printf("You won!\n");
     }
 
   }
