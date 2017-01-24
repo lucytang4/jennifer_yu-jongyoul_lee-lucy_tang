@@ -34,6 +34,7 @@ To run:
 "./client" in another
 
 Upon running client, user will be asked to join game. Game will start when user responds "yes."
+At each turn, the player will be asked if they want to "hit" or "pass."
 
 One player functionality, can be tested locally.
 The server can be left alone, the client is you.
