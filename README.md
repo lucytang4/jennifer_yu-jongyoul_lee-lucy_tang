@@ -30,8 +30,8 @@ ________________
 To run:
 "make clean"
 "make"
-"./server.c" in one terminal
-"./client.c" in another
+"./server" in one terminal
+"./client" in another
 
 Upon running client, user will be asked to join game. Game will start when user responds "yes."
 
